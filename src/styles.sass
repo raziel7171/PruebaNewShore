@@ -1,1 +1,106 @@
-/* You can add global styles to this file, and also import other style files */
+$bgcolor: #262329
+
+$pri-gryff: #7f0909
+$sec-gryff: #ffc500
+
+$pri-slyth: #0d6217
+$sec-slyth: #AAAAAA
+
+$pri-huff: #EEE117
+$sec-huff: #202020
+
+$pri-raven: #000a90
+$sec-raven: #946b2d
+
+$bgcolor_footer: #260E26
+
+$bgcolor_dashboard: #1C2921
+
+$fontsize: 18px
+$font-stack:    Helvetica, sans-serif
+$primary-color: #333
+
+@function text($bgcolor)
+  @if(lightness($bgcolor) > 50)
+    @return #202020
+  @else
+    @return #cdcdcd
+
+@mixin dc($color)
+  background: $color
+  color: text($color)
+
+@function textGryff($bgcolor)
+  @if(lightness($bgcolor) > 50)
+    @return $pri-gryff
+  @else
+    @return $sec-gryff
+
+@mixin dcGryff($color)
+  background: $color
+  color: textGryff($color)
+
+@function textSlyth($bgcolor)
+  @if(lightness($bgcolor) > 50)
+    @return $pri-slyth
+  @else
+    @return $sec-slyth
+
+@mixin dcSlyth($color)
+  background: $color
+  color: textSlyth($color)
+
+@function textHuff($bgcolor)
+  @if(lightness($bgcolor) > 50)
+    @return $sec-huff
+  @else
+    @return $pri-huff
+
+@mixin dcHuff($color)
+  background: $color
+  color: textHuff($color)
+
+@function textRaven($bgcolor)
+  @if(lightness($bgcolor) > 50)
+    @return $pri-raven
+  @else
+    @return $sec-raven
+
+@mixin dcRaven($color)
+  background: $color
+  color: textRaven($color)
+
+body
+  font: 100% $font-stack
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  @include dc($bgcolor)
+
+.dashboard
+  background-color: $bgcolor_dashboard
+  font: 100% $font-stack
+
+.footerini
+  background-color: $bgcolor_footer
+  font: 100% $font-stack
+  position: relative
+  text-align: center
+  bottom: 0
+  width: 100%
+
+.houseCard
+  background-color: $bgcolor_footer
+
+.gryffindor
+  @include dcGryff($pri-gryff)
+
+.slytherin
+  @include dcSlyth($pri-slyth)
+
+.hufflepuff
+  @include dcHuff($pri-huff)
+
+.ravenclaw
+  @include dcRaven($pri-raven)
