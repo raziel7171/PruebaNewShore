@@ -1,16 +1,16 @@
 $bgcolor: #262329
 
-$pri-gryff: #7f0909
-$sec-gryff: #ffc500
+$pri-gryff: #40171A
+$sec-gryff: #e6db23
 
-$pri-slyth: #0d6217
-$sec-slyth: #AAAAAA
+$pri-slyth: #0F2620
+$sec-slyth: #f0f0f0
 
-$pri-huff: #EEE117
+$pri-huff: #8C5716
 $sec-huff: #202020
 
-$pri-raven: #000a90
-$sec-raven: #946b2d
+$pri-raven: #192A40
+$sec-raven: #c4954f
 
 $bgcolor_footer: #260E26
 
@@ -52,9 +52,9 @@ $primary-color: #333
 
 @function textHuff($bgcolor)
   @if(lightness($bgcolor) > 50)
-    @return $sec-huff
-  @else
     @return $pri-huff
+  @else
+    @return $sec-huff
 
 @mixin dcHuff($color)
   background: $color
@@ -93,16 +93,16 @@ body
 .houseCard
   background-color: $bgcolor_footer
 
-.gryffindor
+.Gryffindor
   @include dcGryff($pri-gryff)
 
-.slytherin
+.Slytherin
   @include dcSlyth($pri-slyth)
 
-.hufflepuff
+.Hufflepuff
   @include dcHuff($pri-huff)
 
-.ravenclaw
+.Ravenclaw
   @include dcRaven($pri-raven)
 
 

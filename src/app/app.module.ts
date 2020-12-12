@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { HouseComponent } from './house/house.component';
+import { APP_ROUTING } from './app.routes';
+import { HttpClientModule } from '@angular/common/http';
+import { MembersService } from './services/members.service';
+
 
 @NgModule({
   declarations: [
@@ -16,9 +20,10 @@ import { HouseComponent } from './house/house.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    APP_ROUTING,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MembersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

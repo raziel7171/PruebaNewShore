@@ -1,41 +1,14 @@
-
-<div class="container mt-4" >
-  <div class="card-group ">
-    <div class="card gryffindor">
-      <a href=""><img class="rounded mx-auto d-block img-thumbnail" src="../../assets/img/gryff.png" alt="griff"></a>
-      <div class="card-block">
-        <h4 class="card-title">Gryffindor</h4>
-        <p class="card-text">Número de personas en la casa si señor</p>
-
-      </div>
-    </div>
-    <div class="card slytherin">
-      <a href=""><img class="rounded mx-auto d-block img-thumbnail" src="../../assets/img/slyth.png" alt="slyth"></a>
-      <div class="card-block">
-        <h4 class="card-title">Slytherin</h4>
-        <p class="card-text">Número de personas en la casa si señor</p>
-
-      </div>
-    </div>
-
-  </div>
-  <div class="card-group">
-    <div class="card hufflepuff">
-      <a href=""><img class="rounded mx-auto d-block img-thumbnail" src="../../assets/img/huff.png" alt="huff"></a>
-      <div class="card-block">
-        <h4 class="card-title">Hufflepuff</h4>
-        <p class="card-text">Número de personas en la casa si señor</p>
-
-      </div>
-    </div>
-    <div class="card ravenclaw">
-      <a href=""><img class="rounded mx-auto d-block img-thumbnail" src=".../../assets/img/raven.png" alt="raven"></a>
-      <div class="card-block">
-        <h4 class="card-title">Ravenclaw</h4>
-        <p class="card-text">Número de personas en la casa si señor</p>
-
+<div class="container mt-4">
+  <div class="card-deck-wrapper">
+    <div class="card-group">
+      <div class="card mx-2 {{house.name}}" *ngFor="let house of houses">
+        <a (click)="showHouse(house.name)"><img class="rounded mx-auto d-block img-thumbnail" src="../../assets/img/{{house.name}}.png"
+            alt="{{house.name}}"></a>
+        <div class="card-block mx-auto">
+          <h1 class="card-title text-center">{{house.name}}</h1>
+          <h4 class="card-text text-center">Número de integrantes: {{house.count}}</h4>
+        </div>
       </div>
     </div>
   </div>
-
 </div>
