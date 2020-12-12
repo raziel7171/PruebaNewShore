@@ -9,6 +9,8 @@ import { HouseComponent } from './house/house.component';
 import { APP_ROUTING } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 import { MembersService } from './services/members.service';
+import { FilterService, GridModule, GroupService, PagerModule, SortService, } from '@syncfusion/ej2-angular-grids';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 
 @NgModule({
@@ -20,10 +22,12 @@ import { MembersService } from './services/members.service';
   ],
   imports: [
     BrowserModule,
+    GridModule, PagerModule,
+    // InMemoryWebApiModule.forRoot(MembersService),
     APP_ROUTING,
     HttpClientModule
   ],
-  providers: [MembersService],
+  providers: [MembersService, SortService, FilterService, GroupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

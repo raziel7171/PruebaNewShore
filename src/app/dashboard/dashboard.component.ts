@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MembersService } from '../services/members.service'
+import { Member } from '../models/member'
+import { HouseDataService } from '../services/house-data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +13,7 @@ export class DashboardComponent implements OnInit {
 
   houses: {name: string, count: number }[] = [];
 
-  constructor(public membersService: MembersService, private router: Router) { }
+  constructor(public membersService: MembersService, private houseDataService: HouseDataService, private router: Router) { }
 
   ngOnInit(): void {
     this.getHouses()
@@ -33,11 +35,20 @@ export class DashboardComponent implements OnInit {
       )
     });
 
-    console.log("hola mindo ")
+    
     console.log(this.houses)
   }
 
   showHouse(house: String) {
     this.router.navigate(['/house', house])
+  }
+
+  getDataHouse(house2: String){
+    console.log(house2)
+    this.houseDataService.getHouse(house2).subscribe(data =>{
+      console.log("holitas")
+      console.log(data);
+      
+    })
   }
 }

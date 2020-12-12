@@ -2,7 +2,7 @@
   <div class="card-deck-wrapper">
     <div class="card-group">
       <div class="card mx-2 {{house.name}}" *ngFor="let house of houses">
-        <a (click)="showHouse(house.name)"><img class="rounded mx-auto d-block img-thumbnail" src="../../assets/img/{{house.name}}.png"
+        <a (click)="getDataHouse(house.name)"><img class="rounded mx-auto d-block img-thumbnail" src="../../assets/img/{{house.name}}.png"
             alt="{{house.name}}"></a>
         <div class="card-block mx-auto">
           <h1 class="card-title text-center">{{house.name}}</h1>
