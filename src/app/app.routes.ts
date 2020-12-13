@@ -5,7 +5,7 @@ import { from } from 'rxjs'
 
 const APP_ROUTES: Routes = [
     {path: 'dashboard', component: DashboardComponent}, 
-    {path: 'house/:house', component: HouseComponent},  
+    {path: 'house/:house', component: HouseComponent},      
     {path: '**', pathMatch: 'full', redirectTo: 'dashboard'}
 ];
 

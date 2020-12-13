@@ -1,50 +1,84 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MembersService } from '../services/members.service'
 import { Member } from '../models/member'
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { DataStateChangeEventArgs } from '@syncfusion/ej2-angular-grids';
+import { HouseDataService } from '../services/house-data.service';
+
 
 @Component({
   selector: 'app-house',
-  template: `<ejs-grid [dataSource]="members | async"></ejs-grid>`,
+  template: `
+  <div>
+    <ngx-datatable [rows]="rows" [columns]="columns"> </ngx-datatable>
+  </div>
+`,
   templateUrl: './house.component.html',
   styleUrls: ['./house.component.sass']
-}) 
+})
 export class HouseComponent implements OnInit {
 
-  public memberSer: Observable<DataStateChangeEventArgs>;
-  constructor(private http: HttpClient, public membersService: MembersService, private router: Router) {
 
-    this.memberSer = membersService;
-   }
+  // columns = [{ prop: 'name' }, { name: 'name' }, { name: 'species' }, { name: 'gender'}];
 
+  membersData: {}[] = [];
+  constructor(private http: HttpClient, public membersService: MembersService, private router: Router, private activatedRoute: ActivatedRoute) {
+
+    this.activatedRoute.params.subscribe(params => {
+      this.membersService.getMembers(params['house']).subscribe(
+        (res: Member[]) => {
+          this.membersService.member = res
+          this.membersService.member.map((member: Member) => {
+            let nameLastName = member.name.split(" ");
+            member.name = nameLastName[0];
+            member.lastName = nameLastName[1];
+          })
+        }
+      )
+    })
+  }
 
   ngOnInit() {
-    const state: any = {skip: 0, take: 12};
-    this.membersService.execute(state);
+
   }
 
 
-  members: {}[] = [];
-
-  getMembers(){
-    let members = this.membersService.getMembers();
-    let keys = Object.keys(members)
-
-    keys.forEach(element => {
-      members[element].subscribe(
-        (res: any) => {
-          let obj: any = {}
-          obj['name'] = element
-          
-          this.members.push(obj)
-        },
-        (err: any) => console.log(err)
-      )
+  orderByName(): void {
+    this.membersService.member.sort((a, b) => {
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      return 0;
     });
-    console.log(this.members)
+    
   }
+
+  orderByLastName(): void {
+    this.membersService.member.sort((a, b) => {
+      if (a.lastName > b.lastName) {
+        return 1;
+      }
+      if (a.lastName < b.lastName) {
+        return -1;
+      }
+      return 0;
+    });
+    
+  }
+  
+
+  getDataHouse(house2: string) {
+    console.log(house2)
+    this.membersService.getMembers(house2).subscribe((data: any) => {
+
+      console.log(data);
+    })
+  }
+
+  
 
 }

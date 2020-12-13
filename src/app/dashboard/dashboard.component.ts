@@ -39,10 +39,6 @@ export class DashboardComponent implements OnInit {
     console.log(this.houses)
   }
 
-  showHouse(house: String) {
-    this.router.navigate(['/house', house])
-  }
-
   getDataHouse(house2: String){
     console.log(house2)
     this.houseDataService.getHouse(house2).subscribe(data =>{
@@ -50,5 +46,9 @@ export class DashboardComponent implements OnInit {
       console.log(data);
       
     })
+  }
+  moveHouse(house: string){
+      console.log('/house',house);
+     this.router.navigate(['/house',house]);
   }
 }

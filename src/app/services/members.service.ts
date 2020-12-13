@@ -36,15 +36,6 @@ export class MembersService extends Subject<DataStateChangeEventArgs>{
 
   }
 
-  public execute(state: any): void{
-    this.getMembers2(state).subscribe(x => super.next(x as DataStateChangeEventArgs))
-  }
 
-  getMembers2(state?:any): Observable<any[]>{
-    return this.http.get<Member[]>(this.url_characters).pipe(
-      map((response: any)=> (<any>{
-        result: state.take > 0 ? response.slice(0, state.take) : response,
-        count: response.length
-      })));
-  }
+
 }

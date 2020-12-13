@@ -1,2 +1,24 @@
-<p>eo!
-</p>
+
+<div class="container">
+
+  <button class="btn btn-primary" (click)="orderByName()">Order by Name</button>
+  <button class="btn btn-primary" (click)="orderByLastName()">Order by Last Name</button>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  <br>
+<div class="row card-group">
+  <div class="col-3"  *ngFor="let member of membersService.member">
+      <div class="card {{member.house}} card-icon{{member.house}} card{{member.house}}">
+        <img class="card-img-top img-thumbnail" src="{{member.image}}" alt="Card image" style="width:100%">
+        <div class="card-body">
+          <h3 class="card-text">Name: {{member.name}} {{member.lastName}}</h3>
+          <p class="card-text" *ngIf="member.gender">Gender: {{member.gender}}</p>
+          <p class="card-text" *ngIf="member.dateOfBirth">Birth date: {{member.dateOfBirth}}</p>
+          <p class="card-text" *ngIf="member.patronus">Patronus: {{member.patronus}}</p>
+          <p class="card-text" *ngIf="member.actor">Actor: {{member.actor}}</p>
+          <p class="card-text" *ngIf="member.ancestry">Ancestry: {{member.ancestry}} <span class="tab"></span> <img class="img-thumbnail Bloodimg" src="../../assets/img/{{member.ancestry}}.png" alt="{{member.ancestry}}" *ngIf="member.ancestry"></p>
+
+        </div>
+      </div>
+  </div>
+</div>
+</div>

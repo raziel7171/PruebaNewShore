@@ -1,5 +1,6 @@
 export interface Member {
 	name: string
+	lastName: string
 	species: string
 	gender: string
 	house: string

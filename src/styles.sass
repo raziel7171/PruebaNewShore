@@ -1,24 +1,40 @@
 $bgcolor: #262329
 
-$pri-gryff: #40171A
-$sec-gryff: #e6db23
+$pri-gryff: #441718
+$sec-gryff: #fcb158
 
-$pri-slyth: #0F2620
+$pri-slyth: #123e35
 $sec-slyth: #f0f0f0
 
-$pri-huff: #8C5716
-$sec-huff: #202020
+$pri-huff: #cd8236
+$sec-huff: #212329
 
-$pri-raven: #192A40
-$sec-raven: #c4954f
+$pri-raven: #173351
+$sec-raven: #f0b892
 
-$bgcolor_footer: #260E26
+$bgcolor_elements: #1f1f1f
 
 $bgcolor_dashboard: #1C2921
 
 $fontsize: 18px
-$font-stack:    Helvetica, sans-serif
+
+@import '~@swimlane/ngx-datatable/index.css'
+@import '~@swimlane/ngx-datatable/themes/bootstrap.css'
+@import '~@swimlane/ngx-datatable/assets/icons.css'
+
+@font-face
+    font-family: 'Dumbledor'
+    src: url("./assets/fonts/dum1.ttf") format('truetype')
+
+@font-face
+    font-family: 'Harry P'
+    src: url("./assets/fonts/HARRYP.ttf") format('truetype')
+
+$font-stack:    Dumbledor, Dumbledor
+$font-title:    Harry P, Harry P
 $primary-color: #333
+
+
 
 @function text($bgcolor)
   @if(lightness($bgcolor) > 50)
@@ -52,9 +68,9 @@ $primary-color: #333
 
 @function textHuff($bgcolor)
   @if(lightness($bgcolor) > 50)
-    @return $pri-huff
-  @else
     @return $sec-huff
+  @else
+    @return $pri-huff
 
 @mixin dcHuff($color)
   background: $color
@@ -72,29 +88,34 @@ $primary-color: #333
 
 body
   font: 100% $font-stack
-  height: 100vh
-  display: flex
+  font-size: 20px
   justify-content: center
   align-items: center
   @include dc($bgcolor)
+  background-image: url("/assets/img/background.png")
+  background-size: 100% 100%
+  background-repeat: no-repeat
+  background-attachment: fixed
+  background-position: center 
+  
 
 .dashboard
   background-color: $bgcolor_dashboard
   font: 100% $font-stack
 
-.footerini
-  background-color: $bgcolor_footer
+.foot
+  background-color: $bgcolor_elements
   font: 100% $font-stack
-  position: relative
-  text-align: center
-  bottom: 0
-  width: 100%
+  opacity: 0.5
 
-.houseCard
-  background-color: $bgcolor_footer
+.head  
+  font: 100% $font-title
+  opacity: 0.5
+  justify-content: center
 
 .Gryffindor
   @include dcGryff($pri-gryff)
+ 
 
 .Slytherin
   @include dcSlyth($pri-slyth)
@@ -105,5 +126,46 @@ body
 .Ravenclaw
   @include dcRaven($pri-raven)
 
+.Bloodimg
+  width: 40px
+  height: 40px
+  background-image: none !important
+  background-color: transparent
+
+.img
+  background-image: none !important
+  background-color: transparent
+  border-width: 0px
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-outline-primary
+    background-color: #2f1c47 !important
+    border-width: 0px
+    
+.btn-invs
+  border-width: 0px
+  background-color: transparent
+
+.tab
+  display:inline-block
+  margin-left: 10px
+
+.card-iconGryffindor:hover 
+    background-color: #6b2b2c
+
+.card-iconSlytherin:hover 
+    background-color: #176b5d
+
+.card-iconHufflepuff:hover 
+    background-color: #e6973a
 
 
+.card-iconHufflepuff:hover 
+    background-color: #e6973a
+    color: 212329
+
+.card-iconRavenclaw:hover 
+    background-color: #264f81
+
+.title
+  font: 100% $font-title !important
+  font-size: 1000px
