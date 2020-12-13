@@ -14,6 +14,7 @@ import { MembersService } from './services/members.service';
 import { FilterService, GridModule, GroupService, PagerModule, SortService, } from '@syncfusion/ej2-angular-grids';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HeaderComponent } from './header/header.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -31,7 +32,9 @@ import { HeaderComponent } from './header/header.component';
     GridModule, PagerModule,
     // InMemoryWebApiModule.forRoot(MembersService),
     APP_ROUTING,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [MembersService, SortService, FilterService, GroupService],
   bootstrap: [AppComponent]

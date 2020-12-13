@@ -19,7 +19,7 @@ import { HouseDataService } from '../services/house-data.service';
 })
 export class HouseComponent implements OnInit {
 
-
+  search_term: string ="";
   // columns = [{ prop: 'name' }, { name: 'name' }, { name: 'species' }, { name: 'gender'}];
 
   membersData: {}[] = [];
@@ -69,7 +69,23 @@ export class HouseComponent implements OnInit {
     });
     
   }
-  
+
+  search(param_name:string){
+    console.log(param_name)
+    param_name = param_name.toLocaleLowerCase();
+    let resultado:Member[] = []
+    this.membersService.getMembers().subscribe(
+      ( res: any[]) => {
+        res.forEach(element => {
+          let name = element['name'].toLocaleLowerCase()
+          if(name.indexOf(param_name) >= 0){
+            resultado.push(element)
+          }
+        });
+        this.membersService.member=resultado;
+      }
+    )    
+  }
 
   getDataHouse(house2: string) {
     console.log(house2)

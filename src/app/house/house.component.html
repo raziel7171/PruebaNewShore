@@ -1,12 +1,19 @@
-
 <div class="container">
 
   <button class="btn btn-primary" (click)="orderByName()">Order by Name</button>
   <button class="btn btn-primary" (click)="orderByLastName()">Order by Last Name</button>
-  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  
+  <div class="input-group">
+    <input [(ngModel)]="search_term" type="text" class="form-control" placeholder="Sample: Harry" aria-label="Sample: Harry" aria-describedby="srch_btn">
+    <div class="input-group-append">
+      <button id="srch_btn" class="btn btn-primary" (click)="search(search_term)"><i class="icon-search"></i> Search</button>
+      
+    </div>
+  </div>
+
   <br>
-<div class="row card-group">
-  <div class="col-3"  *ngFor="let member of membersService.member">
+  <div class="row card-group">
+    <div class="col-3" *ngFor="let member of membersService.member">
       <div class="card {{member.house}} card-icon{{member.house}} card{{member.house}}">
         <img class="card-img-top img-thumbnail" src="{{member.image}}" alt="Card image" style="width:100%">
         <div class="card-body">
@@ -15,10 +22,12 @@
           <p class="card-text" *ngIf="member.dateOfBirth">Birth date: {{member.dateOfBirth}}</p>
           <p class="card-text" *ngIf="member.patronus">Patronus: {{member.patronus}}</p>
           <p class="card-text" *ngIf="member.actor">Actor: {{member.actor}}</p>
-          <p class="card-text" *ngIf="member.ancestry">Ancestry: {{member.ancestry}} <span class="tab"></span> <img class="img-thumbnail Bloodimg" src="../../assets/img/{{member.ancestry}}.png" alt="{{member.ancestry}}" *ngIf="member.ancestry"></p>
+          <p class="card-text" *ngIf="member.ancestry">Ancestry: {{member.ancestry}} <span class="tab"></span> <img
+              class="img-thumbnail Bloodimg" src="../../assets/img/{{member.ancestry}}.png" alt="{{member.ancestry}}"
+              *ngIf="member.ancestry"></p>
 
         </div>
       </div>
+    </div>
   </div>
-</div>
 </div>
